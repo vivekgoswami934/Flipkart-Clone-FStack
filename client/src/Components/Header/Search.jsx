@@ -11,7 +11,8 @@ const SearchBoxContainer = styled(Box)`
 `;
 
 const Input = styled(InputBase)`
-  width: 100%;
+  width: 109%;
+  margin-left: 6px;
   font-size: unset;
 `;
 
