@@ -1,16 +1,15 @@
-
-import { Box } from '@mui/material'
-import React from 'react'
-import Navbar from './Navbar'
-
-
+//Fragment
+import React from "react";
+import Banner from "./Banner";
+import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <Box>
+    <>
       <Navbar />
-    </Box>
-  )
-}
+      <Banner />
+    </>
+  );
+};
 
-export default Home
+export default Home;

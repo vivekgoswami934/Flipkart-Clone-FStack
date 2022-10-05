@@ -13,9 +13,9 @@ const Container = styled(Box)`
 `;
 
 const Text = styled(Typography)`
-font-size: 14px;
-font-weight: 600;
-font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
 `;
 
 const Navbar = () => {
