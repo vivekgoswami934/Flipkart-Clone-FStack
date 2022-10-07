@@ -38,9 +38,11 @@ const loginData = {
 };
 
 const LoginDialog = ({ open, setOpen }) => {
+  /////////////////////////////////////////////////////////////
   const [account, toggleAccount] = useState(toggleValues.login);
   const [signup, setSignup] = useState(signUpData);
   const [login, setLogin] = useState(loginData);
+  const [error, setError] = useState(false);
   //////////////////////////////////////////////////////////////
   const onInputChange = (e) => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
@@ -57,8 +59,14 @@ const LoginDialog = ({ open, setOpen }) => {
     setAccount(signup.firstname);
   };
   const loginUser = async () => {
-    let response = await authenticateLogin(login)
-      
+    let response = await authenticateLogin(login);
+    console.log(response);
+    if (response.status === 200) {
+      handleClose();
+      setAccount(response.data.data.firstname);
+    } else {
+      setError(true);
+    }
   };
 
   /////////////////////////////////////////////////////////
@@ -69,6 +77,7 @@ const LoginDialog = ({ open, setOpen }) => {
   const handleClose = () => {
     setOpen(!open);
     toggleAccount(toggleValues.login);
+    setError(false)
   };
 
   const { setAccount } = useContext(DataContext);
@@ -85,12 +94,13 @@ const LoginDialog = ({ open, setOpen }) => {
             <Wrapper>
               <TextField
                 variant="standard"
-                label="Enter Email/Mobile No"
+                label="Enter Username"
                 name="username"
                 onChange={(e) => {
                   onValueChange(e);
                 }}
               />
+              {error && <Error>Please Enter valid name or password</Error>}
               <TextField
                 variant="standard"
                 label="Enter Password"
@@ -108,7 +118,7 @@ const LoginDialog = ({ open, setOpen }) => {
                   loginUser();
                 }}
               >
-                Signup
+                Login
               </LoginButton>
               <Typography style={{ textAlign: "center", fontweight: "550" }}>
                 OR
@@ -236,6 +246,14 @@ const CreateAccountText = styled(Typography)`
   color: #2874f0;
   font-weight: 600;
   cursor: pointer;
+`;
+
+const Error = styled(Typography)`
+  font-size: 10px;
+  color: #ff6161;
+  font-weight: 600;
+  line-height: 0;
+  margin-top: 10;
 `;
 
 export default LoginDialog;

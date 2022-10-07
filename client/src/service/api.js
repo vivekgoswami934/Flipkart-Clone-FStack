@@ -15,5 +15,6 @@ export const authenticateLogin = async (payload) => {
     return await axios.post(`${URL}/login`, payload);
   } catch (error) {
     console.log("Error while login api calling at service", error);
+    return error.response;
   }
 };
