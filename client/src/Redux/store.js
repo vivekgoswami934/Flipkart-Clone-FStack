@@ -2,15 +2,21 @@ import { legacy_createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
-import { getProductsReducer } from "./reducers/productReducer";
+import {
+  getProductDetailsReducer,
+  getProductsReducer,
+} from "./reducers/productReducer";
 
-const reducer = combineReducers({ getProducts: getProductsReducer });
+const reducer = combineReducers({
+  getProducts: getProductsReducer,
+  getProductDetails: getProductDetailsReducer,
+});
 
 const middleware = [thunk];
 
 const store = legacy_createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(...middleware))    
+  composeWithDevTools(applyMiddleware(...middleware))
 );
 
 export default store;

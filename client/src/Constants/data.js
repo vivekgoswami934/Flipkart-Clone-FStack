@@ -11,6 +11,11 @@ export const navData = [
     { url: 'https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100', text: 'Beauty, Toys & More' }
 ];
 
+export const imageURLforMidBanner = [
+    'https://rukminim1.flixcart.com/flap/960/960/image/2f30db9425df5cec.jpg?q=50',
+    'https://rukminim1.flixcart.com/flap/960/960/image/084789479074d2b2.jpg',
+    'https://rukminim1.flixcart.com/flap/960/960/image/1ce0c4c1fb501b45.jpg?q=50'
+];
 
 export const bannerData = [
     { id: 1, url: 'https://rukminim1.flixcart.com/flap/3376/560/image/d117a62eb5fbb8e1.jpg?q=50' },

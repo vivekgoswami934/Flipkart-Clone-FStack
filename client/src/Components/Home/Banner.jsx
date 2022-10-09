@@ -4,10 +4,14 @@ import Carousel from "react-multi-carousel";
 import { bannerData } from "../../Constants/data";
 import "react-multi-carousel/lib/styles.css";
 
-const Image = styled("img")({
+const Image = styled("img")(({ theme }) => ({
   width: "100%",
   height: 280,
-});
+  [theme.breakpoints.down("md")]: {
+    objectFit: "cover",
+    height: 180,
+  },
+}));
 
 const Banner = () => {
   const responsive = {
@@ -38,7 +42,7 @@ const Banner = () => {
       itemClass="carousel-item-padding-40-px"
       containerClass="carousel-container"
     >
-      {bannerData.map((data , id) => (
+      {bannerData.map((data, id) => (
         <Image src={data.url} alt="banner" key={id} />
       ))}
     </Carousel>
