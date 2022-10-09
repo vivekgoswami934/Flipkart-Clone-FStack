@@ -22,9 +22,11 @@ export const getProductsAPI = () => async (dispatch) => {
 };
 
 export const getProudctsDetails = (id) => async (dispatch) => {
+  console.log("called at frontend")
   try {
     dispatch({ type: GET_PRODUCTS_DETAILS_REQUEST });
     const { data } = await axios.get(`${URL}/product/${id}`);
+    console.log("data", data)
     dispatch({ type: GET_PRODUCTS_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_PRODUCTS_DETAILS_FAILURE, payload: error.message });

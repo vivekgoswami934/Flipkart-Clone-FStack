@@ -9,4 +9,13 @@ const getProuducts = async (req, res) => {
   }
 };
 
-module.exports = { getProuducts };
+const getProuductsById = async (req, res) => {
+  try {
+    const product = await ProductModel.findOne({ id: req.params.id });
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(200).json({ message: error.message });
+  }
+};
+
+module.exports = { getProuducts, getProuductsById };
