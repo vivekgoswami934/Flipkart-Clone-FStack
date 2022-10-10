@@ -1,19 +1,52 @@
-import { AppBar, Box, styled, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Drawer,
+  IconButton,
+  styled,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 
 import React from "react";
 import NavButton from "./NavButton";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
+
+const MenuButtonWrapper = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
   const logo =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png";
   const subURLlogo =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
 
+  const drawerOpen = () => {
+    setOpen(true);
+  };
+
+  const drawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 55 }}>
+        <MenuButtonWrapper color="inherit" onClick={drawerOpen}>
+          <MenuIcon />
+          <Drawer open={open} onClose={drawerClose}>
+            hello
+          </Drawer>
+        </MenuButtonWrapper>
         <LogoBox to="/">
           <img src={logo} alt="logo" style={{ width: 75 }} />
           <Box style={{ display: "flex" }}>
@@ -27,7 +60,9 @@ const Header = () => {
           </Box>
         </LogoBox>
         <Search />
-        <NavButton />
+        <CustomButtonWrapper>
+          <NavButton />
+        </CustomButtonWrapper>
       </Toolbar>
     </StyledHeader>
   );
@@ -54,4 +89,12 @@ const SubLogo = styled("img")({
   marginLeft: 3,
 });
 
+const CustomButtonWrapper = styled("span")(({ theme }) => ({
+  margin: "0 5% 0 auto",
+  display: "flex",
+  marginRight: "15px",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 export default Header;

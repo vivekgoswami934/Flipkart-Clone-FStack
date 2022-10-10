@@ -26,7 +26,8 @@ const LoginButton = styled(Button)`
   color: #2874f0;
   background: #fff;
   text-transform: none;
-  padding: 4px 40px;
+  padding: 5px 40px;
+  height: "42px";
   border-radius: 2px;
   box-shadow: none;
   font-weight: 620;
@@ -55,8 +56,8 @@ const NavButton = () => {
         </LoginButton>
       )}
 
-      <Typography style={{ marginTop: "3px" }}>Become a Seller</Typography>
-      <Typography style={{ marginTop: "3px" }}>More</Typography>
+      <Typography style={{ marginTop: 6, width : 135 }}>Become a Seller</Typography>
+      <Typography style={{ marginTop: 6 }}>More</Typography>
       <Container>
         <ShoppingCartIcon />
         <Typography>Cart</Typography>
