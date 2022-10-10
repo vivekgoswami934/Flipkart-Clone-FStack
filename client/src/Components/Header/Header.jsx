@@ -3,6 +3,8 @@ import {
   Box,
   Drawer,
   IconButton,
+  List,
+  ListItem,
   styled,
   Toolbar,
   Typography,
@@ -38,15 +40,26 @@ const Header = () => {
     setOpen(false);
   };
 
+  const list = () => {
+    return (
+      <Box onClick={drawerClose} style={{ width: 200 }} >
+        <List>
+          <ListItem button>
+            <NavButton />
+          </ListItem>
+        </List>
+      </Box>
+    );
+  };
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 55 }}>
         <MenuButtonWrapper color="inherit" onClick={drawerOpen}>
           <MenuIcon />
-          <Drawer open={open} onClose={drawerClose}>
-            hello
-          </Drawer>
         </MenuButtonWrapper>
+        <Drawer open={open} onClose={drawerClose}>
+          {list()}
+        </Drawer>
         <LogoBox to="/">
           <img src={logo} alt="logo" style={{ width: 75 }} />
           <Box style={{ display: "flex" }}>
@@ -92,7 +105,7 @@ const SubLogo = styled("img")({
 const CustomButtonWrapper = styled("span")(({ theme }) => ({
   margin: "0 5% 0 auto",
   display: "flex",
-  marginRight: "15px",
+  // marginRight: "15px",
   [theme.breakpoints.down("sm")]: {
     display: "none",
   },

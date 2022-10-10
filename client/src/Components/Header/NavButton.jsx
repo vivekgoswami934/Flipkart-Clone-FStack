@@ -6,21 +6,25 @@ import { useState } from "react";
 import { DataContext } from "../../Context/DataProvider";
 import Profile from "./Profile";
 
-const Wrapper = styled(Box)`
-  display: flex;
-  margin: 0 3% 0 auto;
-  & > button,
-  & > p,
-  & div {
-    margin-right: 40px;
-    font-size: 17px;
-    align-items: center;
-  }
-`;
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  margin: "0 3% 0 4%",
+  "& > *": {
+    marginRight: "40px",
+    fontSize: "17px",
+    alignItems: "center",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
-const Container = styled(Box)`
-  display: flex;
-`;
+const Container = styled(Box)(({ theme }) => ({
+  display: "flex",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 const LoginButton = styled(Button)`
   color: #2874f0;
@@ -56,7 +60,9 @@ const NavButton = () => {
         </LoginButton>
       )}
 
-      <Typography style={{ marginTop: 6, width : 135 }}>Become a Seller</Typography>
+      <Typography style={{ marginTop: 6, width: 135 }}>
+        Become a Seller
+      </Typography>
       <Typography style={{ marginTop: 6 }}>More</Typography>
       <Container>
         <ShoppingCartIcon />
