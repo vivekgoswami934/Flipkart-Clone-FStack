@@ -7,21 +7,30 @@ import { DataContext } from "../../Context/DataProvider";
 import Profile from "./Profile";
 
 const Wrapper = styled(Box)(({ theme }) => ({
+  margin : "0 3% 0 auto",
   display: "flex",
-  margin: "0 3% 0 4%",
+  // border : "2px solid black",
   "& > *": {
-    marginRight: "40px",
+    marginRight: "40px !important",
     fontSize: "17px",
     alignItems: "center",
+    textDecoration : "none",
+      [theme.breakpoints.down("sm")]:{
+        color : "#2874f0",
+        alignItems : "center",
+        display : "flex" ,
+        flexDirection : "column",
+        marginTop : 10
+      }
   },
-  [theme.breakpoints.down("md")]: {
-    display: "block",
+  [theme.breakpoints.down("sm")]: {
+    display : "block" ,
   },
 }));
 
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     display: "block",
   },
 }));
@@ -60,10 +69,8 @@ const NavButton = () => {
         </LoginButton>
       )}
 
-      <Typography style={{ marginTop: 6, width: 135 }}>
-        Become a Seller
-      </Typography>
-      <Typography style={{ marginTop: 6 }}>More</Typography>
+      <Typography style={{ marginTop: 6, width: 135 }}>  Become a Seller </Typography>
+      <Typography style={{ marginTop: 6 }}> More </Typography>
       <Container>
         <ShoppingCartIcon />
         <Typography>Cart</Typography>
@@ -74,3 +81,4 @@ const NavButton = () => {
 };
 
 export default NavButton;
+

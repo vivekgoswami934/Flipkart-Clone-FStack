@@ -105,7 +105,7 @@ const SubLogo = styled("img")({
 const CustomButtonWrapper = styled("span")(({ theme }) => ({
   margin: "0 5% 0 auto",
   display: "flex",
-  // marginRight: "15px",
+  marginRight: "15px",
   [theme.breakpoints.down("sm")]: {
     display: "none",
   },
