@@ -30,9 +30,9 @@ const DetailsView = () => {
   const { productDetails, loading } = useSelector(
     (state) => state.getProductDetails
   );
-  console.log(productDetails);
+  // console.log(productDetails);
 
-  console.log("productDetails12", productDetails);
+  // console.log("productDetails12", productDetails);
 
   useEffect(() => {
     if (productDetails && id !== productDetails.id) {
