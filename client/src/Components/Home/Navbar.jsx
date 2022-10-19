@@ -5,6 +5,7 @@ const Component = styled(Box)(({ theme }) => ({
   display: "flex",
   margin: "55px 130px 0 130px",
   justifyContent: "space-between",
+  backgroundColor : "white",
   // overflow : "overlay",
   overflow: "hidden",
   [theme.breakpoints.down("lg")]: {

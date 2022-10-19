@@ -3,8 +3,9 @@ import {addEllipsis} from "../../utils/common-utils"
 import ButtonGroups from "./ButtonGroup";
 
 const Component = styled(Box)`
-  border-top: 2px solid black;
+  /* border-top: 2px solid black; */
   display: flex;
+  background-color: white;
 `;
 
 const LeftComponet = styled(Box)`

@@ -1,13 +1,23 @@
-import { Box, Button ,styled } from "@mui/material"
+import { Box, Button ,ButtonGroup,styled } from "@mui/material"
+
+
+
+const ButtonGroupComp = styled(ButtonGroup)`
+  margin-top: 30px;
+`;
+
+const ButtonStyled = styled(Button)`
+  border-radius: 50%;
+`;
 
 
 const ButtonGroups = () =>{
     return (
-        <Box>
-            <Button>-</Button>
-            <Button>1</Button>
-            <Button>+</Button>
-        </Box>
+        <ButtonGroupComp>
+            <ButtonStyled>-</ButtonStyled>
+            <ButtonStyled>1</ButtonStyled>
+            <ButtonStyled>+</ButtonStyled>
+        </ButtonGroupComp>
     )
 }
 
