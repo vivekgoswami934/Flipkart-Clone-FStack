@@ -2,6 +2,8 @@ import axios from "axios";
 
 const URL = `http://localhost:8000`;
 
+const token = localStorage.getItem("flipKartToken")
+
 export const authenticateSignup = async (payload) => {
   try {
     return await axios.post(`${URL}/signup`, payload);
@@ -16,5 +18,14 @@ export const authenticateLogin = async (payload) => {
   } catch (error) {
     console.log("Error while login api calling at service", error);
     return error.response;
+  }
+};
+
+export const payUsingPaytmAPI = async (data) => {
+  try {
+    let response = await axios.post(`${URL}/payment`, data);
+    return response.data;
+  } catch (err) {
+    console.log("Error while using paytm api at service folder", err.message);
   }
 };

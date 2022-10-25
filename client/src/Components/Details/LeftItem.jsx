@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Redux/actions/cartAction";
+import { payUsingPaytmAPI } from "../../service/api";
 
 const LeftItem = ({ product }) => {
   const navigate = useNavigate();
@@ -19,6 +20,10 @@ const LeftItem = ({ product }) => {
     dispatch(addToCart(id));
     navigate("/cart");
   };
+
+  const buyNow = () => {
+    payUsingPaytmAPI()
+  }
   return (
     <LeftContainer>
       <Box
@@ -39,7 +44,7 @@ const LeftItem = ({ product }) => {
           <ShoppingCartIcon />
           Add to cart
         </StyledButton>
-        <StyledButton variant="contained" style={{ background: "#fb541b" }}>
+        <StyledButton variant="contained" style={{ background: "#fb541b" }}   onClick={() => buyNow() }  >
           <FlashOnIcon />
           Buy Now
         </StyledButton>

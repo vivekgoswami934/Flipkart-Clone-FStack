@@ -1,4 +1,4 @@
-import { Box, Menu, MenuItem, styled, Typography } from "@mui/material";
+import { Box, Button, Menu, MenuItem, styled, Typography } from "@mui/material";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import React from "react";
 import { useState } from "react";
@@ -22,14 +22,25 @@ const Profile = ({ account, setAccount }) => {
     setOpen(false);
   };
   const logout = () => {
+    localStorage.removeItem("flipKartToken")
     setAccount("");
+
   };
   return (
     <>
-      <Box onClick={handleClick}>
-        <Typography style={{ marginTop: 3, cursor: "pointer" }}>
+      <Box onClick={handleClick} style={{ marginRight: "20px !important" }}>
+        <Button
+          variant="contained"
+          color="success"
+          style={{
+            marginTop: 1,
+            cursor: "pointer",
+            padding: "8px 25px",
+            marginRight: "40px !important",
+          }}
+        >
           {account}
-        </Typography>
+        </Button>
       </Box>
       <MenuComponent anchorEl={open} open={Boolean(open)} onClose={handleClose}>
         <MenuItem

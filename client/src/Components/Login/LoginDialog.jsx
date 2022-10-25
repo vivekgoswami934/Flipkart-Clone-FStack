@@ -56,14 +56,21 @@ const LoginDialog = ({ open, setOpen }) => {
     let response = await authenticateSignup(signup);
     if (!response) return;
     handleClose();
-    setAccount(signup.firstname);
+    // setAccount(signup.firstname);
   };
   const loginUser = async () => {
     let response = await authenticateLogin(login);
     console.log(response);
+    // console.log(response.data.data._doc.firstname);
+    // console.log(response.data.data.token);
+
     if (response.status === 200) {
+      if (localStorage.getItem("flipKartToken")) {
+        localStorage.removeItem("flipKartToken");
+      }
+      localStorage.setItem("flipKartToken", response.data.data.token);
       handleClose();
-      setAccount(response.data.data.firstname);
+      setAccount(response.data.data._doc.firstname);
     } else {
       setError(true);
     }
@@ -77,7 +84,7 @@ const LoginDialog = ({ open, setOpen }) => {
   const handleClose = () => {
     setOpen(!open);
     toggleAccount(toggleValues.login);
-    setError(false)
+    setError(false);
   };
 
   const { setAccount } = useContext(DataContext);
