@@ -12,9 +12,9 @@ router.get("/products", getProuducts);
 router.get("/product/:id", getProuductsById);
 
 //authentication
-console.log("Before auth")
-app.use(authentication)
-console.log("after auth")
+// console.log("Before auth")
+// app.use(authentication)
+// console.log("after auth")
 
 // cart 
 router.get("/cart" , authentication , getCartData)

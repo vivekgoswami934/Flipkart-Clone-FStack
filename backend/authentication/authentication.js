@@ -5,11 +5,9 @@ const jwt = require("jsonwebtoken");
 
 
 const authentication = (req, res, next) => {
-    // console.log("authentication start");
-    // console.log("start" , req.body);
-  // console.log(req.headers)
-  if (!req.headers.authorization) {
-    // console.log("mai yha hu")
+   
+  if (!req.headers.authorization) { 
+   
     return res.send("Please login again");
   }
 
@@ -18,20 +16,16 @@ const authentication = (req, res, next) => {
 
   jwt.verify(token,"VIVEKGOSWAMI" , function (err, decoded) {
     if (err){
-      //  console.log("amit ghosh" , err)
       res.send("Please login");
     }
-    else{
-      // console.log("amit" , decoded)
-      // req.body = {...req.body , username : decoded.userId}
-  
+    else{  
        if( req.body.data){
         req.body.data.username = decoded.userId 
+        console.log(req.body.data)
        }else{
         req.body = decoded.userId
        }
 
-    //  { req.body.data.username = decoded.userId || req.body = decoded.userId}
     } 
     next();
   });

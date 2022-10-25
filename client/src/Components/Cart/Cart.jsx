@@ -1,18 +1,19 @@
-import { useSelector } from "react-redux";
+import { useSelector, dispatch, useDispatch } from "react-redux";
 
 import { Box, Grid, Typography, styled, Button } from "@mui/material";
 import CartItem from "./CartItem";
 import TotalView from "./TotalView";
 import EmptyCart from "./EmptyCart";
+import { useEffect } from "react";
+import { getCartData } from "../../Redux/actions/cartAction";
 
-const GridContainer = styled(Grid)(({theme})=> ({
+const GridContainer = styled(Grid)(({ theme }) => ({
   /* border: 2px solid black, */
   padding: "30px 135px",
-  [theme.breakpoints.down("md")] :{
-    padding : "15px 0"
-  }
-  
-}))
+  [theme.breakpoints.down("md")]: {
+    padding: "15px 0",
+  },
+}));
 const Header = styled(Box)`
   padding-left: 20px;
   background-color: #fff;
@@ -43,9 +44,16 @@ const GridLeftComp = styled(Grid)(({ theme }) => ({
 }));
 
 const Cart = () => {
+  const dispatch = useDispatch();
+
   const { cartItems } = useSelector((state) => state.cart);
 
-  console.log(cartItems);
+  console.log("manish" , cartItems);
+
+  useEffect(() => {
+    dispatch(getCartData());
+  }, []);
+  // window.location.reload()
 
   return (
     <>

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../Redux/actions/cartAction";
 
 const CartItem = ({ item }) => {
+  console.log("cartItem", item.data);
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 

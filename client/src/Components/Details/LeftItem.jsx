@@ -5,8 +5,9 @@ import FlashOnIcon from "@mui/icons-material/FlashOn";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../Redux/actions/cartAction";
+import { addToCart, getCartData } from "../../Redux/actions/cartAction";
 import { payUsingPaytmAPI } from "../../service/api";
+import { useEffect } from "react";
 
 const LeftItem = ({ product }) => {
   const navigate = useNavigate();
@@ -18,8 +19,11 @@ const LeftItem = ({ product }) => {
 
   const addItemToCart = () => {
     dispatch(addToCart(id));
-    navigate("/cart");
+    dispatch(getCartData())
+    // navigate("/cart");
   };
+
+  
 
   const buyNow = () => {
     payUsingPaytmAPI()

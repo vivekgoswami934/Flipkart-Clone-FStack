@@ -8,11 +8,10 @@ export const cartReducer = (state = intialCartItems, action) => {
   const { type, payload } = action;
   switch (type) {
     case ADD_TO_CART:
-      const item = payload;
-      const exist = state.cartItems.find((product) => product.id === item.id);
 
-      if (exist) return { ...state, cartItems: [...state.cartItems, item] };
-      else return { ...state, cartItems: [...state.cartItems, item] };
+      return {
+        ...state , cartItems : payload
+      }
 
     case REMOVE_FROM_CART:
       return {

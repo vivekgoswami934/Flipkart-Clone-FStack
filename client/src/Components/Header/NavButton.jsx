@@ -6,7 +6,9 @@ import { useState } from "react";
 import { DataContext } from "../../Context/DataProvider";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCartData } from "../../Redux/actions/cartAction";
 
 const Wrapper = styled(Box)(({ theme }) => ({
   margin: "0 3% 0 auto",
@@ -54,10 +56,14 @@ const NavButton = () => {
   const openDialog = () => {
     setOpen(!open);
   };
-
+   const dispatch = useDispatch()
   const { cartItems } = useSelector((state) => state.cart);
 
-  console.log(cartItems);
+    useEffect(()=>{
+      dispatch(getCartData())
+    },[dispatch])
+
+  console.log("navbar",cartItems);
 
   const { account, setAccount } = useContext(DataContext);
 

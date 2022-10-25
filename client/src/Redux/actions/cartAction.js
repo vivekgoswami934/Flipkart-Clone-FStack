@@ -7,35 +7,55 @@ import {
 
 const URL = `http://localhost:8000`;
 
-const token = localStorage.getItem("flipKartToken")
-console.log(token)
+const token = localStorage.getItem("flipKartToken");
+console.log(token);
 
 export const addToCart = (id, quantity) => async (dispatch) => {
   try {
     const { data } = await axios.get(`${URL}/product/${id}`);
-        console.log(data)
-        console.log(token)
-    const response = await axios.post(`${URL}/cart`, {data} , {
+    // console.log(data)
+    // console.log(token)
+    const response = await axios.post(
+      `${URL}/cart`,
+      { data },
+      {
+        headers: {
+          authorization: `Bearer ${token}`, //post
+        },
+      }
+    );
+    {
+      console.log("vivek add to cart");
+    }
+    {
+      console.log(response);
+    }
+
+    const allCartData = await axios.get(`${URL}/cart`, {
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`, //..get
       },
-    })
-     {console.log("vivek add to cart")}
-    {console.log(response)}
+    });
 
-    const allCartData = await axios.get(`${URL}/cart` , {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
+    console.log(allCartData);
 
-    console.log(allCartData)
-
-    dispatch({ type: ADD_TO_CART, payload: { ...data, quantity } });
+    dispatch({ type: ADD_TO_CART, payload: { ...allCartData, quantity } });
   } catch (err) {
     dispatch({ type: ADD_TO_CART_ERROR, payload: err.message });
     console.log("error at addToCart in cartAction", err.message);
   }
+};
+
+export const getCartData = () => async (dispatch) => {
+  const allCartData = await axios.get(`${URL}/cart`, {
+    headers: {
+      authorization: `Bearer ${token}`, //..get
+    },
+  });
+
+  console.log(allCartData);
+
+  dispatch({ type: ADD_TO_CART, payload: allCartData.data });
 };
 
 export const removeFromCart = (id) => (dispatch) => {

@@ -7,13 +7,16 @@ import DetailsView from "./Components/Details/DetailsView";
 import Cart from "./Components/Cart/Cart";
 
 function App() {
+ 
+   
+
   return (
     <DataProvider>
       <Header />
       <Box style={{ marginTop: 54 }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<DetailsView />} />
+          <Route path="/product/:id" element={<DetailsView  />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Box>

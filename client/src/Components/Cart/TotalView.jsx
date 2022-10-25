@@ -39,6 +39,7 @@ const TotalView = ({ totalItem, data }) => {
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
   console.log(totalItem);
+  console.log("roushan" , data);
 
   useEffect(() => {
     totalAmount();
@@ -49,6 +50,7 @@ const TotalView = ({ totalItem, data }) => {
     let price = 0,
       discount = 0;
     data.forEach((item) => {
+       console.log(item)
       price += item.price.mrp;
       discount += item.price.mrp - item.price.cost;
     });
