@@ -12,24 +12,21 @@ console.log(token);
 
 export const addToCart = (id, quantity) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`${URL}/product/${id}`);
-    // console.log(data)
-    // console.log(token)
-    const response = await axios.post(
-      `${URL}/cart`,
-      { data },
+ 
+     
+
+
+
+    const  data  = await axios.get(`${URL}/product/${id}`);
+    
+    const response = await axios.post( `${URL}/cart`, data ,
       {
         headers: {
           authorization: `Bearer ${token}`, //post
         },
       }
     );
-    {
-      console.log("vivek add to cart");
-    }
-    {
-      console.log(response);
-    }
+
 
     const allCartData = await axios.get(`${URL}/cart`, {
       headers: {

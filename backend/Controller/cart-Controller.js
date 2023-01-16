@@ -3,9 +3,9 @@ const { ProductModel } = require("../Models/productSchema");
 
 const addToCartInMonogo = async (req, res) => {
   console.log("addtocart backned");
-  console.log("manish", req.body.data);
+
   try {
-    // const data  = await ProductModel.findOne
+
     const cart = await new CartModel(req.body.data);
     console.log("cart added");
     cart.save();
@@ -29,7 +29,7 @@ const getCartData = async (req, res) => {
 
 const deleteFromCart = (req, res) => {
   try {
-  } catch (error) {}
+  } catch (error) { }
 };
 
 module.exports = { addToCartInMonogo, deleteFromCart, getCartData };

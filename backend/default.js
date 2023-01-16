@@ -5,11 +5,11 @@ const DefaultData = async () => {
   try {
     // console.log(products)   
     // await ProductModel.deleteMany({})
-        await ProductModel.insertMany( products );
+        // await ProductModel.insertMany( products );
       
     console.log("Data imported Successfully");
   } catch (error) {
-    console.log("error while inserting default data", error.message);
+    // console.log("error while inserting default data", error.message);
   }
 };
 

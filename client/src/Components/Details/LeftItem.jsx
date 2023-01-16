@@ -4,13 +4,14 @@ import FlashOnIcon from "@mui/icons-material/FlashOn";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getCartData } from "../../Redux/actions/cartAction";
 import { payUsingPaytmAPI } from "../../service/api";
 import { useEffect } from "react";
 
 const LeftItem = ({ product }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const {cart} = useSelector(state => state )
   const dispatch = useDispatch();
 
   const [quantity, setQuantity] = useState(1);
@@ -18,8 +19,19 @@ const LeftItem = ({ product }) => {
   const { id } = product;
 
   const addItemToCart = () => {
-    dispatch(addToCart(id));
-    dispatch(getCartData())
+    
+    const getting = cart.cartItems.find((el) => el.id === id)
+    console.log("prajwal" , cart,getting)
+    if(getting){
+      alert("data is already presesnt")
+      }else{
+        dispatch(addToCart(id)).then(()=>(
+          dispatch(getCartData())
+        ))
+
+      }
+
+    
     // navigate("/cart");
   };
 

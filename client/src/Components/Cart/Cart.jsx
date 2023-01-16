@@ -63,7 +63,7 @@ const Cart = () => {
             <Header>
               <Typography>My Cart ({cartItems.length}) </Typography>
             </Header>
-            {cartItems.map((item) => (
+            {cartItems?.map((item) => (
               <CartItem item={item} />
             ))}
             <PlaceButtonWrapper>
