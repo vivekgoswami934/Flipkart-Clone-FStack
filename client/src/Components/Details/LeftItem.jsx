@@ -20,7 +20,7 @@ const LeftItem = ({ product }) => {
 
   const addItemToCart = () => {
     console.log("ccv",cart.cartItems)
-    const getting = cart.cartItems.data > 0 &&  cart?.cartItems?.find((el) => el.id === id)
+    const getting =  cart?.cartItems?.find((el) => el.id === id)
     console.log("prajwal" , cart,getting)
     if(getting){
       alert("data is already presesnt")

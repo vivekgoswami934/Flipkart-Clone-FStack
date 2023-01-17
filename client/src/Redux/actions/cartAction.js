@@ -16,7 +16,11 @@ export const addToCart = (id, quantity) => async (dispatch) => {
   try {
 
     const data = await axios.get(`${URL}/product/${id}`);
-         console.log(data)
+         console.log(data);
+         delete data["data"]['_id'];
+         console.log(data);
+
+
     const response = await axios.post(`${URL}/cart`, data,
       {
         headers: {
