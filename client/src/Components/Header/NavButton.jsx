@@ -87,7 +87,7 @@ const NavButton = () => {
       </Typography>
       <Typography style={{ marginTop: 6 }}> More </Typography>
       <Container to="/cart">
-        <Badge badgeContent={cartItems.length} color="warning">
+        <Badge badgeContent={ cartItems == "Please login" ? null : cartItems.length} color="warning"> 
           <ShoppingCartIcon />
         </Badge>
         <Typography style={{marginLeft: 12}} >Cart</Typography>

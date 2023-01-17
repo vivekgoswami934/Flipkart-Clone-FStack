@@ -3,9 +3,7 @@ const { ProductModel } = require("../Models/productSchema");
 
 const addToCartInMonogo = async (req, res) => {
   console.log("addtocart backned");
-
   try {
-
     const cart = await new CartModel(req.body.data);
     console.log("cart added");
     cart.save();

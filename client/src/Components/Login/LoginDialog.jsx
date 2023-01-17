@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { authenticateLogin, authenticateSignup } from "../../service/api";
 import { DataContext } from "../../Context/DataProvider";
+import { useDispatch } from "react-redux";
+import {  getCartDataFirst } from "../../Redux/actions/cartAction";
 
 const toggleValues = {
   login: {
@@ -38,6 +40,7 @@ const loginData = {
 };
 
 const LoginDialog = ({ open, setOpen }) => {
+  const dispatch = useDispatch()
   /////////////////////////////////////////////////////////////
   const [account, toggleAccount] = useState(toggleValues.login);
   const [signup, setSignup] = useState(signUpData);
@@ -68,7 +71,12 @@ const LoginDialog = ({ open, setOpen }) => {
       if (localStorage.getItem("flipKartToken")) {
         localStorage.removeItem("flipKartToken");
       }
+      console.log(1)
+      console.log(2)
       localStorage.setItem("flipKartToken", response.data.data.token);
+      console.log(3)
+      dispatch(getCartDataFirst(response.data.data.token))
+      console.log(4)
       handleClose();
       setAccount(response.data.data._doc.firstname);
     } else {

@@ -14,13 +14,13 @@ const LeftItem = ({ product }) => {
   const {cart} = useSelector(state => state )
   const dispatch = useDispatch();
 
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
 
   const { id } = product;
 
   const addItemToCart = () => {
-    
-    const getting = cart.cartItems.find((el) => el.id === id)
+    console.log("ccv",cart.cartItems)
+    const getting = cart.cartItems.data > 0 &&  cart?.cartItems?.find((el) => el.id === id)
     console.log("prajwal" , cart,getting)
     if(getting){
       alert("data is already presesnt")
