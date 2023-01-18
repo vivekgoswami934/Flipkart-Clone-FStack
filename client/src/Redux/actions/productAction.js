@@ -7,7 +7,8 @@ import {
   GET_PRODUCTS_SUCCESS,
 } from "../constants/actionType";
 
-const URL = "http://localhost:8000";
+// const URL = "http://localhost:8000";
+const URL = "https://calm-blue-bull-tutu.cyclic.app";
 
 export const getProductsAPI = () => async (dispatch) => {
   //  console.log("action getproduct calling")
@@ -22,7 +23,7 @@ export const getProductsAPI = () => async (dispatch) => {
 };
 
 export const getProudctsDetails = (id) => async (dispatch) => {
-  console.log("called at frontend")
+  // console.log("called at frontend")
   try {
     dispatch({ type: GET_PRODUCTS_DETAILS_REQUEST });
     const { data } = await axios.get(`${URL}/product/${id}`);

@@ -55,13 +55,18 @@ const Cart = () => {
   }, []);
   // window.location.reload()
 
+  if(cartItems === "Please login" ){
+console.log("viviviviviviviviiviviviviiviviviviviviviv")
+    return  <EmptyCart />
+  }
+
   return (
     <>
-      {cartItems.length ? (
+      {cartItems?.length > 0 ? (
         <GridContainer container>
           <GridLeftComp item lg={9} md={9} sm={12} xs={12}>
             <Header>
-              <Typography>My Cart ({cartItems.length}) </Typography>
+              <Typography>My Cart ({cartItems?.length}) </Typography>
             </Header>
             {cartItems?.map((item) => (
               <CartItem item={item} />

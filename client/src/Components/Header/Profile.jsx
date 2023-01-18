@@ -2,6 +2,8 @@ import { Box, Button, Menu, MenuItem, styled, Typography } from "@mui/material";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { makeEmptyCartData } from "../../Redux/actions/cartAction";
 
 const MenuComponent = styled(Menu)`
   margin-top: 5px;
@@ -13,6 +15,7 @@ const Logout = styled(Typography)`
 `;
 
 const Profile = ({ account, setAccount }) => {
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
 
   const handleClick = (event) => {
@@ -22,9 +25,10 @@ const Profile = ({ account, setAccount }) => {
     setOpen(false);
   };
   const logout = () => {
+     dispatch(makeEmptyCartData())
     localStorage.removeItem("flipKartToken")
+    localStorage.removeItem("flipkartUserName");
     setAccount("");
-
   };
   return (
     <>

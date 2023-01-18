@@ -30,9 +30,6 @@ const DetailsView = () => {
   const { productDetails, loading } = useSelector(
     (state) => state.getProductDetails
   );
-  // console.log(productDetails);
-
-  // console.log("productDetails12", productDetails);
 
   useEffect(() => {
     if (productDetails && id !== productDetails.id) {
@@ -41,7 +38,7 @@ const DetailsView = () => {
   }, [dispatch, id, productDetails, loading]);
   return (
     <Component>
-      {productDetails && Object.keys(productDetails).length && (
+      {productDetails && Object.keys(productDetails)?.length && (
         <GridContainer container>
           <Grid item lg={4} md={4} sm={8} xs={12}>
             <LeftItem product={productDetails} />

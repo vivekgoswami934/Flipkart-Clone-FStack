@@ -1,7 +1,8 @@
-import { Box, Button, styled } from "@mui/material";
+import { Alert, Box, Button, styled } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
-
+// or
+import { Snackbar } from '@mui/material';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +12,11 @@ import { useEffect } from "react";
 
 const LeftItem = ({ product }) => {
   // const navigate = useNavigate();
+  const [success,setSuccess ] = useState(false)
+  const [fail,setFail ] = useState(false)
   const {cart} = useSelector(state => state )
   const dispatch = useDispatch();
+
 
   // const [quantity, setQuantity] = useState(1);
 
@@ -23,23 +27,47 @@ const LeftItem = ({ product }) => {
     const getting =  cart?.cartItems?.find((el) => el.id === id)
     console.log("prajwal" , cart,getting)
     if(getting){
-      alert("data is already presesnt")
+
+      setFail(true)
+      handleClick()
+      setTimeout(()=>{
+        setFail(false)
+        handleClose()
+      },3000)
       }else{
         dispatch(addToCart(id)).then(()=>(
           dispatch(getCartData())
-        ))
+        )).then(() => setSuccess(true)).then(()=> setTimeout(()=> setSuccess(false),3000))
 
       }
 
     
     // navigate("/cart");
   };
+/////////////////////////////////////////////////
+const [state, setState] = useState({
+  open: false,
+  vertical: 'top',
+  horizontal: 'center',
+ 
+});
+const { vertical, horizontal } = state;
 
+const handleClick = (newState) => () => {
+  setState({ open: true, ...newState });
+};
+
+const handleClose = () => {
+  setState({ ...state, open: false });
+};
+/////////////////////////////////////////////////
   
 
   const buyNow = () => {
     payUsingPaytmAPI()
   }
+
+
   return (
     <LeftContainer>
       <Box
@@ -49,7 +77,7 @@ const LeftItem = ({ product }) => {
           width: "90%",
         }}
       >
-        <Image src={product.detailUrl} alt="bigpicture" />
+        <Image src={product?.detailUrl} alt="bigpicture" />
       </Box>
       <Box>
         <StyledButton
@@ -65,6 +93,16 @@ const LeftItem = ({ product }) => {
           Buy Now
         </StyledButton>
       </Box>
+      <Snackbar open={success} >
+        <ColorAlert severity="success" sx={{ width: '100%' }}>
+           Item added in cart successfully!!!
+        </ColorAlert>
+      </Snackbar>
+      <Snackbar open={fail} anchorOrigin={{ vertical, horizontal }}>
+        <ColorAlertError  severity="error" sx={{ width: '100%' }}    >
+          Item alredy added in cart!!!
+        </ColorAlertError>
+      </Snackbar>
     </LeftContainer>
   );
 };
@@ -83,7 +121,7 @@ const Image = styled("img")({
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  width: "48%",
+  width: "46%",
   height: 45,
   borderRadius: 8,
   [theme.breakpoints.down("lg")]: {
@@ -93,6 +131,14 @@ const StyledButton = styled(Button)(({ theme }) => ({
     width: "48%",
   },
   marginTop: "2%",
+}));
+const ColorAlert = styled(Alert)(({ theme }) => ({
+ backgroundColor : "green",
+ color : "white"
+}));
+const ColorAlertError = styled(Alert)(({ theme }) => ({
+ backgroundColor : "orange",
+ color : "white"
 }));
 
 export default LeftItem;

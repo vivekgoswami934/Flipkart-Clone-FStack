@@ -20,7 +20,7 @@ const Home = () => {
 
   const data = useSelector((state) => state.getProducts.products);
 
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     dispatch(getProductsAPI());

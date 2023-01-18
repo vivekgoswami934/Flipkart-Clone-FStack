@@ -74,6 +74,7 @@ const LoginDialog = ({ open, setOpen }) => {
       console.log(1)
       console.log(2)
       localStorage.setItem("flipKartToken", response.data.data.token);
+      localStorage.setItem("flipkartUserName", login.username);
       console.log(3)
       dispatch(getCartDataFirst(response.data.data.token))
       console.log(4)

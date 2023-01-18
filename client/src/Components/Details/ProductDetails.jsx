@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import { fontSize } from "@mui/system";
+
 
 const ProductDetails = ({ productDetails }) => {
   const fassured =
@@ -20,7 +20,7 @@ const ProductDetails = ({ productDetails }) => {
   const currentDate = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
   return (
     <>
-      <Typography>{productDetails.title.longTitle}</Typography>
+      <Typography>{productDetails?.title.longTitle}</Typography>
       <Typography>
         & Rating & 1 Reviews
         <Box component="span">
@@ -33,15 +33,15 @@ const ProductDetails = ({ productDetails }) => {
       </Typography>
       <Typography>
         <Box component="span" style={{ fontSize: 28 }}>
-          ₹{productDetails.price.cost}
+          ₹{productDetails?.price.cost}
         </Box>
         &nbsp;&nbsp;&nbsp;
         <Box component="span" style={{ color: "#878787" }}>
-          <strike>₹{productDetails.price.mrp}</strike>
+          <strike>₹{productDetails?.price.mrp}</strike>
         </Box>
         &nbsp;&nbsp;
         <Box component="span" style={{ color: "#388e3c" }}>
-          {productDetails.price.discount}
+          {productDetails?.price.discount}
         </Box>
       </Typography>
       <Typography>Available Offers</Typography>

@@ -16,9 +16,7 @@ import Search from "./Search";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {getCartData} from "../../Redux/actions/cartAction"
+
 
 const MenuButtonWrapper = styled(IconButton)(({ theme }) => ({
   display: "none",
@@ -28,7 +26,7 @@ const MenuButtonWrapper = styled(IconButton)(({ theme }) => ({
 }));
 
 const Header = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
 
   const logo =

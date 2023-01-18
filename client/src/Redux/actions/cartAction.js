@@ -2,13 +2,15 @@ import axios from "axios";
 import {
   ADD_TO_CART,
   ADD_TO_CART_ERROR,
+  EMPTY_CART,
   REMOVE_FROM_CART,
 } from "../constants/cartAction";
 
-const URL = `http://localhost:8000`;
+// const URL = `http://localhost:8000`;
+const URL = `https://calm-blue-bull-tutu.cyclic.app`;
 
 const token = localStorage.getItem("flipKartToken");
-console.log(token);
+// console.log(token);
 
 export const addToCart = (id, quantity) => async (dispatch) => {
   const token = localStorage.getItem("flipKartToken");
@@ -16,9 +18,9 @@ export const addToCart = (id, quantity) => async (dispatch) => {
   try {
 
     const data = await axios.get(`${URL}/product/${id}`);
-         console.log(data);
+        //  console.log(data);
          delete data["data"]['_id'];
-         console.log(data);
+        //  console.log(data);
 
 
     const response = await axios.post(`${URL}/cart`, data,
@@ -47,16 +49,16 @@ export const addToCart = (id, quantity) => async (dispatch) => {
 };
 
 export const getCartData = () => async (dispatch) => {
-  console.log(3.5)
+  // console.log(3.5)
   const token = localStorage.getItem("flipKartToken");
-  console.log(token);
+  // console.log(token);
   const allCartData = await axios.get(`${URL}/cart`, {
     headers: {
       authorization: `Bearer ${token}`, //..get
     },
   });
 
-  console.log(allCartData);
+  // console.log(allCartData);
 
   dispatch({ type: ADD_TO_CART, payload: allCartData.data });
 };
@@ -73,7 +75,14 @@ export const getCartDataFirst = (tokens) => async (dispatch) => {
     },
   });
 
-  console.log(allCartData);
+  // console.log(allCartData);
 
   dispatch({ type: ADD_TO_CART, payload: allCartData.data });
 };
+
+
+export const makeEmptyCartData = () => (dispatch) => {
+  console.log("Empty action")
+  dispatch({ type: EMPTY_CART});
+
+}

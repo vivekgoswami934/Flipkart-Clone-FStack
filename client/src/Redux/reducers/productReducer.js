@@ -12,7 +12,6 @@ const homeProducts = {
 };
 
 export const getProductsReducer = (state = homeProducts, action) => {
-  //   console.log(action.payload);
   switch (action.type) {
     case GET_PRODUCTS_SUCCESS:
       return { products: action.payload };
@@ -29,7 +28,6 @@ export const getProductDetailsReducer = (
   state = { productDetails: {} },
   action
 ) => {
-  console.log(action.payload);
   switch (action.type) {
     case GET_PRODUCTS_DETAILS_REQUEST:
       return {
