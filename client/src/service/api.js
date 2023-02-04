@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = `http://localhost:8000`;
+// const URL = `http://localhost:8000`;
+const URL = `https://calm-blue-bull-tutu.cyclic.app`;
+
 
 const token = localStorage.getItem("flipKartToken")
 

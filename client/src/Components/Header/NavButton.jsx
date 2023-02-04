@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { getCartData } from "../../Redux/actions/cartAction";
 
 const Wrapper = styled(Box)(({ theme }) => ({
-  margin: "0 3% 0 auto",
+  margin: "0 1% 0 0.5%",
   display: "flex",
   // border : "2px solid black",
   "& > *": {
@@ -85,7 +85,9 @@ const NavButton = () => {
       <Typography style={{ marginTop: 6, width: 135 }}>
         Become a Seller
       </Typography>
-      <Typography style={{ marginTop: 6 }}> More </Typography>
+      <Container to="/products">
+      <Typography> Products </Typography>
+      </Container>
       <Container to="/cart">
         <Badge badgeContent={ cartItems === "Please login" ? null : cartItems.length} color="warning"> 
           <ShoppingCartIcon />

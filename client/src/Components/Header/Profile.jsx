@@ -35,7 +35,7 @@ const Profile = ({ account, setAccount }) => {
       <Box onClick={handleClick} style={{ marginRight: "20px !important" }}>
         <Button
           variant="contained"
-          color="success"
+          color="warning"
           style={{
             marginTop: 1,
             cursor: "pointer",

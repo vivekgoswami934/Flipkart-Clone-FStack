@@ -5,6 +5,7 @@ import DataProvider from "./Context/DataProvider";
 import { Routes, Route } from "react-router-dom";
 import DetailsView from "./Components/Details/DetailsView";
 import Cart from "./Components/Cart/Cart";
+import AllProducts from "./Components/AllProductPage/AllProducts";
 
 function App() {
  
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<DetailsView  />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/products" element={<AllProducts />} />
         </Routes>
       </Box>
     </DataProvider>
