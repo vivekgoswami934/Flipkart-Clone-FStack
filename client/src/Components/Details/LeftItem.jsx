@@ -25,7 +25,7 @@ const LeftItem = ({ product }) => {
   const addItemToCart = () => {
     console.log("ccv",cart.cartItems)
     const getting =  cart?.cartItems?.find((el) => el.id === id)
-    console.log("prajwal" , cart,getting)
+    // console.log("prajwal" , cart,getting)
     if(getting){
 
       setFail(true)
@@ -70,13 +70,7 @@ const handleClose = () => {
 
   return (
     <LeftContainer>
-      <Box
-        style={{
-          padding: "15px 20px",
-          border: "0.5px solid #f0f0f0",
-          width: "90%",
-        }}
-      >
+      <Box style={{padding: "15px 20px", border: "0.5px solid #f0f0f0",width: "90%",}}>
         <Image src={product?.detailUrl} alt="bigpicture" />
       </Box>
       <Box>
