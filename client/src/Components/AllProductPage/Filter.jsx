@@ -1,23 +1,38 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 
 const Filter = () => {
-  const object = [
+  const filterObject = [
     {
       id : 1,
-      title : "mobile",
+      title : "Mobile",
     },
     {
-      id : 1,
-      title : "",
+      id : 2,
+      title : "Laptop",
     },
     {
-      id : 1,
-      title : "",
+      id : 3,
+      title : "Kitchen",
+    },
+    {
+      id : 4,
+      title : "Kitchen",
+    },
+    {
+      id : 5,
+      title : "Earphone",
     },
   ]
   return (
     <Box>
+
+     { filterObject.map((el)=>(
+      <>
+      <input type="checkbox" />
+      <Typography>{el.title}</Typography>
+      </>
+     ))}
       
     </Box>
   )

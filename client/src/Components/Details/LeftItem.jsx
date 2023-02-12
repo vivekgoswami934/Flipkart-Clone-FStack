@@ -4,30 +4,47 @@ import FlashOnIcon from "@mui/icons-material/FlashOn";
 // or
 import { Snackbar } from '@mui/material';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, getCartData } from "../../Redux/actions/cartAction";
 import { payUsingPaytmAPI } from "../../service/api";
-import { useEffect } from "react";
 
 const LeftItem = ({ product }) => {
-  // const navigate = useNavigate();
   const [success,setSuccess ] = useState(false)
   const [fail,setFail ] = useState(false)
+  const [loginFail,setLoginFail ] = useState(false)
   const {cart} = useSelector(state => state )
   const dispatch = useDispatch();
+  const [state, setState] = useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+   
+  });
 
-
-  // const [quantity, setQuantity] = useState(1);
 
   const { id } = product;
 
   const addItemToCart = () => {
     console.log("ccv",cart.cartItems)
-    const getting =  cart?.cartItems?.find((el) => el.id === id)
-    // console.log("prajwal" , cart,getting)
-    if(getting){
 
+    //  Please login
+
+    if(cart.cartItems === "Please login" ||cart.cartItems?.length === 0 ){
+      setLoginFail(true)
+      handleClick()
+      setTimeout(()=>{
+        setLoginFail(false)
+        handleClose()
+      },3000)
+
+       return
+    }
+
+    const getting =  cart?.cartItems?.find((el) => el.id === id)
+    console.log(getting)
+
+
+    if(getting){
       setFail(true)
       handleClick()
       setTimeout(()=>{
@@ -40,17 +57,9 @@ const LeftItem = ({ product }) => {
         )).then(() => setSuccess(true)).then(()=> setTimeout(()=> setSuccess(false),3000))
 
       }
-
-    
-    // navigate("/cart");
   };
 /////////////////////////////////////////////////
-const [state, setState] = useState({
-  open: false,
-  vertical: 'top',
-  horizontal: 'center',
- 
-});
+
 const { vertical, horizontal } = state;
 
 const handleClick = (newState) => () => {
@@ -95,6 +104,11 @@ const handleClose = () => {
       <Snackbar open={fail} anchorOrigin={{ vertical, horizontal }}>
         <ColorAlertError  severity="error" sx={{ width: '100%' }}    >
           Item alredy added in cart!!!
+        </ColorAlertError>
+      </Snackbar>
+      <Snackbar open={loginFail} anchorOrigin={{ vertical, horizontal }}>
+        <ColorAlertError  severity="error" sx={{ width: '100%' }}    >
+          PLEASE LOGIN !!!!  You have not login yet...
         </ColorAlertError>
       </Snackbar>
     </LeftContainer>
