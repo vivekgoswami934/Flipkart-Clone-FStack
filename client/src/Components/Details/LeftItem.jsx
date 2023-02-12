@@ -29,7 +29,7 @@ const LeftItem = ({ product }) => {
 
     //  Please login
 
-    if(cart.cartItems === "Please login" ||cart.cartItems?.length === 0 ){
+    if(cart.cartItems === "Please login"){
       setLoginFail(true)
       handleClick()
       setTimeout(()=>{
@@ -52,6 +52,7 @@ const LeftItem = ({ product }) => {
         handleClose()
       },3000)
       }else{
+        console.log("viveiiveiveafhdakhdfahfaf")
         dispatch(addToCart(id)).then(()=>(
           dispatch(getCartData())
         )).then(() => setSuccess(true)).then(()=> setTimeout(()=> setSuccess(false),3000))
