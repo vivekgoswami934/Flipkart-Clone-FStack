@@ -1,7 +1,8 @@
 // npm i react-multi-carousel
-import { styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import Carousel from "react-multi-carousel";
-import { bannerData } from "../../Constants/data";
+// import { bannerData } from "../../Constants/data";
 import "react-multi-carousel/lib/styles.css";
 
 const Image = styled("img")(({ theme }) => ({
@@ -9,11 +10,21 @@ const Image = styled("img")(({ theme }) => ({
   height: 280,
   [theme.breakpoints.down("md")]: {
     objectFit: "cover",
-    height: 180,
+    height: 180,    
+  },
+}));
+const Word  = styled(Typography)(({ theme }) => ({
+  fontSize : "70px",
+  marginTop : "-17.5%" ,
+  marginLeft : "40%",
+  [theme.breakpoints.down("md")]: {
+    marginTop : "-40%"   ,
+    fontSize : "30px",
+   marginLeft : "40%",
   },
 }));
 
-const Banner = () => {
+const Banner = ({bannerData}) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -43,7 +54,10 @@ const Banner = () => {
       containerClass="carousel-container"
     >
       {bannerData.map((data, id) => (
+        <Box  style={{position : "relative"}}>
         <Image src={data.url} alt="banner" key={id} />
+        <Word fontSize="900" fontWeight="bold" style={{position : "absolute" , color : "red", }}>Flipkart</Word>
+        </Box>
       ))}
     </Carousel>
   );

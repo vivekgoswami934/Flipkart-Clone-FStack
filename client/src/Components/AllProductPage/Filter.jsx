@@ -17,7 +17,7 @@ const Filter = () => {
     },
     {
       id : 4,
-      title : "Kitchen",
+      title : "Watches",
     },
     {
       id : 5,
@@ -28,10 +28,9 @@ const Filter = () => {
     <Box>
 
      { filterObject.map((el)=>(
-      <>
-      <input type="checkbox" />
-      <Typography>{el.title}</Typography>
-      </>
+      <Box display="flex" margin="20px 40px">
+      <input type="checkbox" /> <Typography>{el.title}</Typography>
+      </Box>
      ))}
       
     </Box>

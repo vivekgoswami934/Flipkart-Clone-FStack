@@ -7,7 +7,7 @@ const Product = () => {
     const {products} = useSelector(state => state.getProducts)
     console.log(products)
   return (
-    <Grid container gap={"40px"} style={{width : "95%", margin : "auto" , boxShadow : "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"}} >
+    <Grid container gap={"20px"} style={styleObj} >
       
       {
         products?.map(item => {
@@ -19,3 +19,6 @@ const Product = () => {
 }
 
 export default Product
+
+
+const styleObj = {width : "95%", margin : "auto" , boxShadow : "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"}

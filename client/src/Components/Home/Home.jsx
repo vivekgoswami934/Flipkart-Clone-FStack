@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Slide from "./Slide";
 import MidSlide from "./MidSlide";
 import MidBanner from "./MidBanner";
+import { bannerData1, bannerData2 } from "../../Constants/data";
 
 const Component = styled(Box)`
   padding: 10px 10px;
@@ -30,8 +31,9 @@ const Home = () => {
     <>
       <Navbar />
       <Component>
-        <Banner />
+        <Banner bannerData = {bannerData1} />
         <MidSlide data={data} title="Deal of the Day" timer={true} />
+        <Banner bannerData = {bannerData2} />
         <Slide data={data} title="Discounts for you" />
         <Slide data={data} title="Trending Items" />
         <MidBanner />
